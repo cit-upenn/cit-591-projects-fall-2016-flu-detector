@@ -98,6 +98,6 @@ public class Collector {
 			counts[i] = c.search(keywords[i]);
 			System.out.printf("The number of tweets containing \"%s\" : %d%n",keywords[i],counts[i]);
 		}
-		
+		//testtest
 	}
 }
