@@ -1,4 +1,8 @@
-
+/**
+ * 
+ * @author LuyiYang
+ *
+ */
 public class FluSwingTester {
 
 	public static void main(String[] args) {
