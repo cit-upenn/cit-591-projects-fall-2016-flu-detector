@@ -46,10 +46,8 @@ public class FluScoreCaculator {
 	}
 
 	
-	public double calculateFlueScore(){
+	public double calculateFlueScore(int[] counts){
 		double flueScore = 0;
-		
-		int[] counts = getKeywordsCounts();
 		
 		flueScore = 0.35*counts[0] + 0.35*counts[1] + 0.1*counts[2] + 0.1*counts[3]+ 0.1*counts[4];
 		

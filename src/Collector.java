@@ -1,6 +1,4 @@
-/**
- * kk
- */
+
 import twitter4j.GeoLocation;
 import twitter4j.Query;
 import twitter4j.QueryResult;
@@ -46,8 +44,8 @@ public class Collector {
 		this.endTime = endTime;
 	}
 	
-	public void setLocation(double lat, double lon) {
-		location = new GeoLocation(lat,lon);
+	public void setLocation(GeoLocation location) {
+		this.location = location;
 		
 	}
 	
@@ -94,12 +92,12 @@ public class Collector {
 		Collector c = new Collector();
 		c.setSince("2016-11-27");
 		c.setUntil("2016-11-28");
-		c.setLocation(39.954435, -75.194937);
+//		c.setLocation(39.954435, -75.194937);
 		
 		for (int i = 0 ; i < keywords.length ; i ++) {
 			counts[i] = c.search(keywords[i]);
 			System.out.printf("The number of tweets containing \"%s\" : %d%n",keywords[i],counts[i]);
 		}
-		//testtest
+		
 	}
 }
