@@ -1,4 +1,4 @@
-
+//
 import twitter4j.GeoLocation;
 import twitter4j.Query;
 import twitter4j.QueryResult;
