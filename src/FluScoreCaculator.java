@@ -1,3 +1,7 @@
+import java.io.FileNotFoundException;
+
+import twitter4j.GeoLocation;
+import twitter4j.Location;
 import twitter4j.TwitterException;
 /**
  * This class will calculate the flu score given the start time and end time of a period
@@ -5,58 +9,41 @@ import twitter4j.TwitterException;
  *
  */
 public class FluScoreCaculator {
-	
-	private Collector keyWordsCollector;
-	private KeyWords keywords;
-	private String startTime;
-	private String endTime;
-	
+
+	private KeywordsGetter keywordsGetter;
+
 	public FluScoreCaculator(){
-		keyWordsCollector = new Collector();
-		keywords = new KeyWords();
-	}
-	
-	public void setSince(String startTime) {
-		this.startTime = startTime;
-	}
-
-	public void setUntil(String endTime){
-		this.endTime = endTime;
-	}
-	
-	public int[] getKeywordsCounts(){
-		
-		keyWordsCollector.setSince(startTime);
-		keyWordsCollector.setUntil(endTime);
-		
-		int size = keywords.getkeyWords().size();
-		
-		int[] counts = new int[size];
-		
-		for(int i = 0; i<size; i++){
-			try {
-				counts[i] = keyWordsCollector.search(keywords.getAKeyWord(i));
-			} catch (TwitterException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		try {
+			keywordsGetter = new KeywordsGetter("keywords.csv");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-		return counts;
 	}
 
-	
-	public double calculateFlueScore(int[] counts){
-		double flueScore = 0;
+
+	public double getfluScore(Collector keyWordsCollector){
+
+		int c;
+		double fluScore = 0;
 		
-		flueScore = 0.35*counts[0] + 0.35*counts[1] + 0.1*counts[2] + 0.1*counts[3]+ 0.1*counts[4];
-		
-		return flueScore;
+		try {
+			
+			for(String key: keywordsGetter.getKeywords()){
+
+				c = keyWordsCollector.search(key);
+
+				double score = c*keywordsGetter.getKeywordWeight(key);
+
+				fluScore += score;
+
+			}
+		} catch (TwitterException e) {
+
+			e.printStackTrace();
+		}
+
+		return fluScore;
 	}
-	
 
-
-
-	
-	
 }

@@ -85,33 +85,17 @@ public class FluSwing implements ActionListener {
 			FluScoreCaculator f = new FluScoreCaculator();
 			Collector c = new Collector();
 			DateCalculator d = new DateCalculator(2);
-			KeyWords keywords = new KeyWords();
 
-			int size = keywords.getkeyWords().size();
 			int numberOfPeriods = 2;
 			double[] fluScoreArray = new double[numberOfPeriods];
 
-			//locationMessage.getText();
 			c.setLocation(location);
 
 			for(int i = 1; i<=numberOfPeriods; i++){
 				c.setSince(d.getStartDate());
 				c.setUntil(d.getEndData());
 
-
-				int[] counts = new int[size];
-
-				for(int j = 0; j<size; j++){
-
-					try {
-						counts[j] = c.search(keywords.getAKeyWord(j));
-					} catch (TwitterException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-
-				fluScoreArray[i-1] = f.calculateFlueScore(counts);
+				fluScoreArray[i-1] = f.getfluScore(c);
 
 				d.moveBackward();
 			}
