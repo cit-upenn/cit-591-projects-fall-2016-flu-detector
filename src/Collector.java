@@ -15,24 +15,8 @@ public class Collector {
 	private GeoLocation location;
 	
 	public Collector() {
-		ConfigurationBuilder cb = new ConfigurationBuilder();
-		cb.setDebugEnabled(true)
-		  .setOAuthConsumerKey("VzKbJjQHrc3fxS7hm2DGGi3hm")
-		  .setOAuthConsumerSecret("sB6lvUpN601KWXk0tiE6VgfEu6oVtoToNKrN46Ir3D82gF7IEU")
-		  .setOAuthAccessToken("1036064185-bacpuZqOca8iSdUF8neqKA5uMok1zDi1vXalGAw")
-		  .setOAuthAccessTokenSecret("VC610RpP6mcLk0L9qB7kcbe6IS0woSsuxxMEOyOhDc8ie");
 
-		cb.setDebugEnabled(true)
-		  .setOAuthConsumerKey("JPlfMmqWtSqJzmENJV7FjbbyZ")
-		  .setOAuthConsumerSecret("1LPzdw2vuQFGHvs1ZiW7GpcOzOBLRhYuQkvBVOhKBHU5EUXGRT")
-		  .setOAuthAccessToken("512682400-xWHuVGLbkIWeEJY0OVyG5ATUOrDq0DYIm59nqjTz")
-		  .setOAuthAccessTokenSecret("FyKmeCiG5aQHSSd0GrlAxi6kpOwjXn4ab3f2ttHWrWI8l");
-		
-		TwitterFactory tf = new TwitterFactory(cb.build());
-		
-		
-		twitter = tf.getInstance();
-
+		twitter = TwitterConnector.getTwitter();
 
 	}
 	
@@ -92,7 +76,7 @@ public class Collector {
 		Collector c = new Collector();
 		c.setSince("2016-11-27");
 		c.setUntil("2016-11-28");
-//		c.setLocation(39.954435, -75.194937);
+		c.setLocation(new GeoLocation(39.954435, -75.194937));
 		
 		for (int i = 0 ; i < keywords.length ; i ++) {
 			counts[i] = c.search(keywords[i]);
