@@ -40,17 +40,12 @@ public class KeywordsGetter {
 		return keywordsmap.keySet().size();	
 	}
 	
-	public HashMap<String,Double> getKeywordsMap(){
-		return keywordsmap;
-	}
+//	public HashMap<String,Double> getKeywordsMap(){
+//		return keywordsmap;
+//	}
 	
 	
-	public static void main(String[] args) throws FileNotFoundException {
-		
-		KeywordsGetter kg = new KeywordsGetter("keywords.csv");
-		
-		System.out.println(kg.getKeywords());
-	}
+
 	
 	
 }

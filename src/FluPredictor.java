@@ -6,19 +6,19 @@ import java.util.ArrayList;
  */
 public class FluPredictor {
 
-	private double firstPeriodFS;
-	private double secondPeriodFS;
+	private double fsBefore;
+	private double fsNow;
 
 	public FluPredictor(double firstPeriodFS, double secondPeriodFS) {
-		this.firstPeriodFS = firstPeriodFS;
-		this.secondPeriodFS = secondPeriodFS;
+		this.fsBefore = firstPeriodFS;
+		this.fsNow = secondPeriodFS;
 	}
 	
 	public boolean alert(){
 		
 		double increaseRate = 0;
 		
-		increaseRate = (firstPeriodFS - secondPeriodFS)/firstPeriodFS;
+		increaseRate = (fsNow - fsBefore)/fsBefore;
 		
 		if(increaseRate >= 0.3){
 			

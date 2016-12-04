@@ -3,6 +3,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -20,12 +21,14 @@ public class FluSwing implements ActionListener {
 	private JButton fbutton;
 	private JComboBox<String> comboBox; 
 	private LocationGetter lg;
+	private KeywordsGetter kg;
 	private GeoLocation location;
 	
 	
 	public FluSwing() {
 		try {
 			lg = new LocationGetter("Locations.csv");
+			kg = new KeywordsGetter("keywords.csv");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -82,11 +85,15 @@ public class FluSwing implements ActionListener {
 		
 		if (arg0.getSource().equals(fbutton)) {
 
-			FluScoreCaculator f = new FluScoreCaculator();
+			FluScoreCaculator f = new FluScoreCaculator(kg);
 			Collector c = new Collector();
 			DateCalculator d = new DateCalculator(2);
-
+			
+			ArrayList<Integer> counts = new ArrayList<Integer>();
+			ArrayList<String> keywords = new ArrayList<String>();
+			
 			int numberOfPeriods = 2;
+			
 			double[] fluScoreArray = new double[numberOfPeriods];
 
 			c.setLocation(location);
@@ -94,8 +101,22 @@ public class FluSwing implements ActionListener {
 			for(int i = 1; i<=numberOfPeriods; i++){
 				c.setSince(d.getStartDate());
 				c.setUntil(d.getEndData());
-
-				fluScoreArray[i-1] = f.getfluScore(c);
+				
+				counts.clear();
+				keywords.clear();
+				
+				for(String key: kg.getKeywords()){
+					try {
+						counts.add(c.search(key));
+					} catch (TwitterException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					keywords.add(key);
+				}
+				
+				
+				fluScoreArray[i-1] = f.getfluScore(counts, keywords);
 
 				d.moveBackward();
 			}
