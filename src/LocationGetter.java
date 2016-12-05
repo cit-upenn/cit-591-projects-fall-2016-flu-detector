@@ -35,13 +35,13 @@ public class LocationGetter {
 		return map.get(state);
 	}
 	
-	public Set<String> getStats(){
+	public Set<String> getStates(){
 		return map.keySet();	
 	}
 	
 	public static void main(String[] args) throws FileNotFoundException {
 		
 		LocationGetter lg = new LocationGetter("Locations.csv");
-		System.out.println(lg.getStats());
+		System.out.println(lg.getStates());
 	}
 }

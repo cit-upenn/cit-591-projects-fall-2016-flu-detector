@@ -37,7 +37,7 @@ public class FluSwing implements ActionListener {
 		
 		comboBox = new JComboBox<String>();
 		
-		for (String stats : lg.getStats()) {
+		for (String stats : lg.getStates()) {
 			comboBox.addItem(stats);
 		}
 		comboBox.setSelectedIndex(0);
