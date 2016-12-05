@@ -95,12 +95,19 @@ public class TwitterConnectorTest {
 			r2 = tw2.search(q);
 			t1 = r1.getTweets();
 			t2 = r2.getTweets();
+			
 			tw2 = TwitterConnector.getTwitterBackup();
 			q  = r1.nextQuery(); 
 			// from test2 we know r1.nextQuery has the same search result with r2.nextQuery
 
 			t1.addAll(tw1.search(q).getTweets());
 			t2.addAll(tw2.search(q).getTweets());
+			
+			Query q1 = r1.nextQuery();
+			Query q2 = r2.nextQuery();
+			
+			t1.addAll(tw1.search(q1).getTweets());
+			t2.addAll(tw1.search(q2).getTweets());
 			
 		} catch (TwitterException e) {
 
