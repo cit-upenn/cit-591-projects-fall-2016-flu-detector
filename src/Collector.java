@@ -39,6 +39,9 @@ public class Collector {
 		query.setCount(100);
 		query.setSince(startTime);
 		query.setUntil(endTime);
+		if (location == null) {
+			throw new LocationNotSelectedExeption()
+		}
 		query.setGeoCode(location, 150, Query.MILES);
 		
 		QueryResult result;
@@ -48,10 +51,7 @@ public class Collector {
 			
 			result = twitter.search(query);
 			count += result.getTweets().size();
-			
-//			Status status = result.getTweets().get(0);
-//			System.out.println(status.getUser().getScreenName() + status.getCreatedAt()+ ":" + status.getText() );
-			
+					
 			if (!result.hasNext()){
 				return count;
 			}
