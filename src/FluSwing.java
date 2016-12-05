@@ -108,12 +108,9 @@ public class FluSwing implements ActionListener {
 				for(String key: kg.getKeywords()){
 					try {
 						counts.add(c.search(key));
-					} catch (TwitterException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
 					} catch (LocationNotSelectedExeption e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
+//						e.printStackTrace();
 						System.out.println("should selected a state first");
 						return;
 					}
