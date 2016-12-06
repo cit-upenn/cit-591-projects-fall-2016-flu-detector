@@ -40,7 +40,7 @@ public class FluPane extends Application{
 //			System.out.println(locationMenu.getValue());
 		});
 		
-		Button button = new Button("Click here to check flu");
+		button = new Button("Click here to check flu");
 
 		button.setOnAction(e->{
 			boolean isFlu = false;
