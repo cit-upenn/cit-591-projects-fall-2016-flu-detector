@@ -34,7 +34,7 @@ public class Functions {
 		
 		FluScoreCaculator f = new FluScoreCaculator(kg);
 		Collector c = new Collector();
-		DateCalculator d = new DateCalculator(2);
+		DateCalculator d = new DateCalculator(3);
 		
 		ArrayList<Integer> counts = new ArrayList<Integer>();
 		ArrayList<String> keywords = new ArrayList<String>();
