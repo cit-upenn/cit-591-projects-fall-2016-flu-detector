@@ -9,6 +9,7 @@ public class Functions {
 	private LocationGetter lg;
 	private KeywordsGetter kg;
 	private GeoLocation location;
+	private Collector c; 
 	
 	public Functions(){
 		try {
@@ -18,6 +19,8 @@ public class Functions {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		c = new Collector();
 		
 	}
 	
@@ -37,7 +40,7 @@ public class Functions {
 	public boolean alert() throws LocationNotSelectedExeption{
 		
 		FluScoreCaculator f = new FluScoreCaculator(kg);
-		Collector c = new Collector();
+		//Collector c = new Collector();
 		DateCalculator d = new DateCalculator(3);
 		
 		ArrayList<Integer> counts = new ArrayList<Integer>();
