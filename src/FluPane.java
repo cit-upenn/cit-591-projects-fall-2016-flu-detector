@@ -50,6 +50,7 @@ public class FluPane extends Application{
 			LatLong loc = new LatLong(f.getLocation(state).getLatitude(),f.getLocation(state).getLongitude());
 			mg.setMarker(loc);
 			mg.setCenter(loc);
+			mg.setCircle(loc);
 			mg.setZoom(7);
 //			System.out.println(locationMenu.getValue());
 		});

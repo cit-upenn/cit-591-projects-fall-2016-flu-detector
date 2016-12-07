@@ -5,12 +5,16 @@ import com.lynden.gmapsfx.javascript.object.LatLong;
 import com.lynden.gmapsfx.javascript.object.MapOptions;
 import com.lynden.gmapsfx.javascript.object.Marker;
 import com.lynden.gmapsfx.javascript.object.MarkerOptions;
+import com.lynden.gmapsfx.shapes.Circle;
+import com.lynden.gmapsfx.shapes.CircleOptions;
 
 public class MapGenerator implements MapComponentInitializedListener{
 
 	GoogleMapView mapView;
 	GoogleMap map;
+	
 	Marker marker;
+	Circle circle;
 	
 	public MapGenerator() {
 		mapView = new GoogleMapView();
@@ -40,6 +44,13 @@ public class MapGenerator implements MapComponentInitializedListener{
 
 	}
 	
+	public void setCircle(LatLong loc) {
+		
+		circle.setCenter(loc);
+		circle.setVisible(true);
+
+	}
+	
 	@Override
 	public void mapInitialized() {
 		// TODO Auto-generated method stub
@@ -64,6 +75,17 @@ public class MapGenerator implements MapComponentInitializedListener{
 		.title("Location");
 		marker = new Marker( markerOptions );
 		map.addMarker(marker);
+		
+		CircleOptions circleOptions = new CircleOptions();
+		circleOptions
+		.fillOpacity(0.01)
+		.visible(false)
+		.strokeColor("red")
+		.radius(241401.6); //150 MILE
+		
+		circle = new Circle(circleOptions);
+		map.addMapShape(circle);
+	
 	}
 
 }
