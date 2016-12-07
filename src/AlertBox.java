@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -16,7 +17,7 @@ import javafx.geometry.*;
 
 public class AlertBox {
 
-	public static void display(String title, String message, ArrayList<String> tweets){
+	public static void display(String title, String message, HashMap<String, Integer> keywordsCounts){
 
 		Stage alertWindow = new Stage();
 		//prevent user get back without taking care of the open window
@@ -29,7 +30,7 @@ public class AlertBox {
 		Button closeButton = new Button("go back");
 		Button findMore = new Button("find more");
 		closeButton.setOnAction (e->alertWindow.close());
-		findMore.setOnAction(e->FindMore.display(tweets));
+		findMore.setOnAction(e->FindMore.display(keywordsCounts));
 
 		VBox layout = new VBox(10);
 		layout.getChildren().addAll(label, findMore, closeButton);

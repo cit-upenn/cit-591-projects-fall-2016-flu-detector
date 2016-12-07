@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -22,7 +23,7 @@ import javafx.geometry.*;
 
 public class FindMore {
 
-	public static void display( ArrayList<String> tweets){
+	public static void display( HashMap<String, Integer> keywordsCounts){
 		
 		//Functions f = new Functions();
 
@@ -41,16 +42,14 @@ public class FindMore {
 		center.setPadding(new Insets(10));
 	    center.setSpacing(8);
 	    
-		Text title = new Text("Here are the top tweets around!");
+		Text title = new Text("Here are the key words and frequencies in past 6 days!");
 		title.setFont(Font.font("Arial", FontWeight.BOLD, 14));
 		center.getChildren().add(title);
 		
-		for(int i = 0; i<tweets.size(); i++){
-			Text content = new Text(tweets.get(i));
-			title.setFont(Font.font("Arial", FontWeight.NORMAL, 12));
+		for(String keyword: keywordsCounts.keySet()){
+			Text content = new Text(keyword + ": " +  keywordsCounts.get(keyword));
 			center.getChildren().add(content);
-		}	
-
+		}
 		BorderPane bp = new BorderPane();
 		BorderPane.setAlignment(closeButton, Pos.CENTER);
 		BorderPane.setMargin(closeButton, new Insets(12, 12, 20, 12));

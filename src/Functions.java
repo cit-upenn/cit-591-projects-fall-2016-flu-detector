@@ -1,5 +1,6 @@
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Set;
 
 import twitter4j.GeoLocation;
@@ -11,6 +12,7 @@ public class Functions {
 	private KeywordsGetter kg;
 	private GeoLocation location;
 	private Collector c; 
+	private HashMap<String, Integer> keywordsCounts;
 	
 	public Functions(){
 		try {
@@ -22,6 +24,7 @@ public class Functions {
 		}
 		
 		c = new Collector();
+		keywordsCounts = new HashMap<String, Integer>();
 		
 	}
 	
@@ -61,8 +64,10 @@ public class Functions {
 			keywords.clear();
 			
 			for(String key: kg.getKeywords()){
-					counts.add(c.search(key));
+				int count = c.search(key); 
+				counts.add(count);
 				keywords.add(key);
+				keywordsCounts.put(key, count + keywordsCounts.getOrDefault(key, 0));
 			}
 			
 			
@@ -78,21 +83,8 @@ public class Functions {
 		
 	}
 	
-	public ArrayList<String> getExampleTweets(){
-		
-		ArrayList<String> exampleTweets = new ArrayList<String>();
-		
-		for(int i = 0; i<10; i++){
-			
-			Status tweet = c.getExampleTweet();
-			
-			String t = tweet.getText();
-			
-			exampleTweets.add(t);
-			
-		}
-		
-		return exampleTweets;
+	public HashMap<String, Integer> getkeyWordsCounts(){
+		return keywordsCounts;
 		
 	}
 

@@ -77,7 +77,7 @@ public class FluPane extends Application{
 				s = "It is not likely to be a flu soon! Relax but pay attention!";
 				
 			}
-			AlertBox.display("Prediction Results", s, f.getExampleTweets());
+			AlertBox.display("Prediction Results", s, f.getkeyWordsCounts());
 		});
 
 
