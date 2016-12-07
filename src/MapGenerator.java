@@ -78,9 +78,10 @@ public class MapGenerator implements MapComponentInitializedListener{
 		
 		CircleOptions circleOptions = new CircleOptions();
 		circleOptions
-		.fillOpacity(0.01)
+		.fillColor("gray")
+		.fillOpacity(0.20)
 		.visible(false)
-		.strokeColor("red")
+		.strokeColor("gray")
 		.radius(241401.6); //150 MILE
 		
 		circle = new Circle(circleOptions);

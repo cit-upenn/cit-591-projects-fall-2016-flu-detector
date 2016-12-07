@@ -51,7 +51,7 @@ public class FluPane extends Application{
 			mg.setMarker(loc);
 			mg.setCenter(loc);
 			mg.setCircle(loc);
-			mg.setZoom(7);
+			mg.setZoom(6);
 //			System.out.println(locationMenu.getValue());
 		});
 		
