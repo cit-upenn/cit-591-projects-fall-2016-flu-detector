@@ -22,15 +22,17 @@ public class AlertBox {
 		//prevent user get back without taking care of the open window
 		alertWindow.initModality(Modality.APPLICATION_MODAL);
 		alertWindow.setTitle(title);
-		alertWindow.setMinWidth(300);
+		alertWindow.setMinWidth(400);
 
 		Label label = new Label();
 		label.setText(message);
-		Button closeButton = new Button("close the window");
+		Button closeButton = new Button("go back");
+		Button findMore = new Button("find more");
 		closeButton.setOnAction (e->alertWindow.close());
+		findMore.setOnAction(e->FindMore.display());
 
 		VBox layout = new VBox(10);
-		layout.getChildren().addAll(label, closeButton);
+		layout.getChildren().addAll(label, findMore, closeButton);
 		layout.setAlignment(Pos.CENTER);
 
 		Scene scene = new Scene(layout);
