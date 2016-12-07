@@ -1,7 +1,11 @@
 //
+import java.util.ArrayList;
+import java.util.Random;
+
 import twitter4j.GeoLocation;
 import twitter4j.Query;
 import twitter4j.QueryResult;
+import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 
@@ -11,9 +15,17 @@ public class Collector {
 	private String startTime;
 	private String endTime;
 	private GeoLocation location;
+	private ArrayList<Status> exampleTweets;
+	private Random rand;
 	
 	public Collector() {
 		twitter = TwitterConnector.getTwitter();
+		exampleTweets = new ArrayList<>();
+		rand = new Random();
+	}
+	
+	public void resetCollector() {
+		exampleTweets.clear();
 	}
 	
 	public void setSince(String startTime) {
@@ -27,6 +39,11 @@ public class Collector {
 	public void setLocation(GeoLocation location) {
 		this.location = location;
 		
+	}
+	
+	public Status getExampleTweet() {
+		int index = rand.nextInt(exampleTweets.size());
+		return exampleTweets.remove(index);
 	}
 	
 	public int search(String keyword) throws LocationNotSelectedExeption {
@@ -49,6 +66,7 @@ public class Collector {
 			try {
 				
 				result = twitter.search(query);
+				exampleTweets.addAll(result.getTweets());
 				count += result.getTweets().size();
 				
 				if (!result.hasNext()){
