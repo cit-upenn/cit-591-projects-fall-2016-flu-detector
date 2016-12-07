@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 
 import javafx.application.Application;
@@ -14,7 +13,7 @@ import javafx.stage.Stage;
 import twitter4j.GeoLocation;
 import javafx.geometry.*;
 
-public class AlertBox {
+public class ExceptionBox {
 
 	public static void display(String title, String message, ArrayList<String> tweets){
 
@@ -27,14 +26,13 @@ public class AlertBox {
 		Label label = new Label();
 		label.setText(message);
 		Button closeButton = new Button("go back");
-		Button findMore = new Button("find more");
 		closeButton.setOnAction (e->alertWindow.close());
-		findMore.setOnAction(e->FindMore.display(tweets));
 
 		VBox layout = new VBox(10);
-		layout.getChildren().addAll(label, findMore, closeButton);
+		layout.getChildren().addAll(label, closeButton);
 		layout.setAlignment(Pos.CENTER);
 		layout.setMargin(closeButton, new Insets(5,6, 6, 5) );
+		layout.setMargin(label, new Insets(5,6, 6, 5) );
 
 		Scene scene = new Scene(layout);
 		alertWindow.setScene(scene);

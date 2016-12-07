@@ -58,7 +58,7 @@ public class FluPane extends Application{
 //			System.out.println(locationMenu.getValue());
 		});
 		
-		button = new Button("Click here to check flu");
+		button = new Button("Click here to check the flu");
 
 		button.setOnAction(e->{
 			boolean isFlu = false;
@@ -66,7 +66,7 @@ public class FluPane extends Application{
 				isFlu = f.alert();
 			} catch (LocationNotSelectedExeption e1) {
 				
-				AlertBox.display("Flu Results", "Please select your location first.", null);
+				ExceptionBox.display("OOPS!", "Please select your location first.", null);
 				return;
 			}
 			String s;
@@ -77,7 +77,7 @@ public class FluPane extends Application{
 				s = "It is not likely to be a flu soon! Relax but pay attention!";
 				
 			}
-			AlertBox.display("Flu Results", s, f.getExampleTweets());
+			AlertBox.display("Prediction Results", s, f.getExampleTweets());
 		});
 
 
@@ -98,7 +98,7 @@ public class FluPane extends Application{
 		
 		Scene scene = new Scene(layout, 600, 600);
 		
-		Button button1 = new Button("Let's start!");
+		Button button1 = new Button("Let's get started!");
 		button1.setOnAction(e -> window.setScene(scene));
 		
 		
