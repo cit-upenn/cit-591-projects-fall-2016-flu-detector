@@ -86,7 +86,7 @@ public class Functions {
 			
 			Status tweet = c.getExampleTweet();
 			
-			String t = "@" + tweet.getUser() + ": " + tweet.getText();
+			String t = tweet.getText();
 			
 			exampleTweets.add(t);
 			

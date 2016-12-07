@@ -66,7 +66,7 @@ public class FluPane extends Application{
 				isFlu = f.alert();
 			} catch (LocationNotSelectedExeption e1) {
 				
-				AlertBox.display("Flu Results", "Please select your location first.");
+				AlertBox.display("Flu Results", "Please select your location first.", null);
 				return;
 			}
 			String s;
@@ -77,7 +77,7 @@ public class FluPane extends Application{
 				s = "It is not likely to be a flu soon! Relax but pay attention!";
 				
 			}
-			AlertBox.display("Flu Results", s);
+			AlertBox.display("Flu Results", s, f.getExampleTweets());
 		});
 
 

@@ -22,7 +22,9 @@ import javafx.geometry.*;
 
 public class FindMore {
 
-	public static void display(){
+	public static void display( ArrayList<String> tweets){
+		
+		//Functions f = new Functions();
 
 		Stage findMoreWindow = new Stage();
 		//prevent user get back without taking care of the open window
@@ -42,7 +44,12 @@ public class FindMore {
 		Text title = new Text("Here are the top tweets around!");
 		title.setFont(Font.font("Arial", FontWeight.BOLD, 14));
 		center.getChildren().add(title);
-				
+		
+		for(int i = 0; i<tweets.size(); i++){
+			Text content = new Text(tweets.get(i));
+			title.setFont(Font.font("Arial", FontWeight.NORMAL, 12));
+			center.getChildren().add(content);
+		}	
 
 		BorderPane bp = new BorderPane();
 		BorderPane.setAlignment(closeButton, Pos.CENTER);

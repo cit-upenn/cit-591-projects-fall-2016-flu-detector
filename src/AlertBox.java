@@ -16,7 +16,7 @@ import javafx.geometry.*;
 
 public class AlertBox {
 
-	public static void display(String title, String message){
+	public static void display(String title, String message, ArrayList<String> tweets){
 
 		Stage alertWindow = new Stage();
 		//prevent user get back without taking care of the open window
@@ -29,7 +29,7 @@ public class AlertBox {
 		Button closeButton = new Button("go back");
 		Button findMore = new Button("find more");
 		closeButton.setOnAction (e->alertWindow.close());
-		findMore.setOnAction(e->FindMore.display());
+		findMore.setOnAction(e->FindMore.display(tweets));
 
 		VBox layout = new VBox(10);
 		layout.getChildren().addAll(label, findMore, closeButton);
