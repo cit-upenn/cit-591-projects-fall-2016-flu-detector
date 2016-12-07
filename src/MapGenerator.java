@@ -25,6 +25,10 @@ public class MapGenerator implements MapComponentInitializedListener{
 		return map.getCenter();
 	}
 	
+	public void setCenter(LatLong loc) {
+		map.setCenter(loc);
+	}
+	
 	public void setZoom(int scale) {
 		map.setZoom(scale);
 	}

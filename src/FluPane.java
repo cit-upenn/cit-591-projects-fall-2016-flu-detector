@@ -1,3 +1,5 @@
+import com.lynden.gmapsfx.javascript.object.LatLong;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -8,11 +10,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import twitter4j.GeoLocation;
 
 public class FluPane extends Application{
 
 	
 	Functions f;
+	MapGenerator mg;
+	
 	BorderPane border;
 	Stage window;
 	Button button;
@@ -27,7 +32,10 @@ public class FluPane extends Application{
 
 	@Override
 	public void start(Stage primaryStage) {
+		
 		f = new Functions();
+		mg = new MapGenerator();
+		
 		window = primaryStage;
 		window.setTitle("Flu Prediction");
 
@@ -36,7 +44,13 @@ public class FluPane extends Application{
 		locationMenu.getItems().addAll(f.getStates());
 		
 		locationMenu.setOnAction(e->{
-			f.setLocation(locationMenu.getValue());
+			String state = locationMenu.getValue(); 
+			f.setLocation(state);
+			
+			LatLong loc = new LatLong(f.getLocation(state).getLatitude(),f.getLocation(state).getLongitude());
+			mg.setMarker(loc);
+			mg.setCenter(loc);
+			mg.setZoom(7);
 //			System.out.println(locationMenu.getValue());
 		});
 		
@@ -76,6 +90,8 @@ public class FluPane extends Application{
 		BorderPane.setAlignment(locationMenu, Pos.CENTER);
 		layout.setTop(locationMenu);
 
+		layout.setCenter(mg.getMapView());
+		
 		Scene scene = new Scene(layout, 600, 600);
 
 		window.setScene(scene);

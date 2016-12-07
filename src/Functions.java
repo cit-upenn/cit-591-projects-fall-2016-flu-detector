@@ -30,6 +30,10 @@ public class Functions {
 		location = lg.getLocation(state);
 	}
 	
+	public GeoLocation getLocation(String state) {
+		return lg.getLocation(state);
+	}
+	
 	public boolean alert() throws LocationNotSelectedExeption{
 		
 		FluScoreCaculator f = new FluScoreCaculator(kg);
