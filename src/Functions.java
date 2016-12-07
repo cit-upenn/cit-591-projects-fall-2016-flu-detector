@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import twitter4j.GeoLocation;
+import twitter4j.Status;
 
 public class Functions {
 	
@@ -42,7 +43,7 @@ public class Functions {
 		FluScoreCaculator f = new FluScoreCaculator(kg);
 		//Collector c = new Collector();
 		DateCalculator d = new DateCalculator(3);
-		
+		c.resetCollector();
 		ArrayList<Integer> counts = new ArrayList<Integer>();
 		ArrayList<String> keywords = new ArrayList<String>();
 		
@@ -75,7 +76,23 @@ public class Functions {
 
 		return fp.alert();
 		
+	}
+	
+	public ArrayList<String> getExampleTweets(){
 		
+		ArrayList<String> exampleTweets = new ArrayList<String>();
+		
+		for(int i = 0; i<10; i++){
+			
+			Status tweet = c.getExampleTweet();
+			
+			String t = "@" + tweet.getUser() + ": " + tweet.getText();
+			
+			exampleTweets.add(t);
+			
+		}
+		
+		return exampleTweets;
 		
 	}
 
