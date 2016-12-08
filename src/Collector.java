@@ -42,7 +42,11 @@ public class Collector {
 	}
 	
 	public Status getExampleTweet() {
-		int index = rand.nextInt(exampleTweets.size());
+		int bound = exampleTweets.size();
+		if (bound <= 0) {
+			return null;
+		}
+		int index = rand.nextInt(bound);
 		return exampleTweets.remove(index);
 	}
 	
