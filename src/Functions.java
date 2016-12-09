@@ -12,7 +12,7 @@ public class Functions {
 	private KeywordsGetter kg;
 	private GeoLocation location;
 	private Collector c; 
-	private HashMap<String, Integer> keywordsCounts;
+	private ArrayList<HashMap<String, Integer>> keywordsCounts;
 	
 	public Functions(){
 		try {
@@ -24,7 +24,7 @@ public class Functions {
 		}
 		
 		c = new Collector();
-		keywordsCounts = new HashMap<String, Integer>();
+		keywordsCounts = new ArrayList<HashMap<String, Integer>>();
 		
 	}
 	
@@ -42,7 +42,7 @@ public class Functions {
 	}
 	
 	public boolean alert() throws LocationNotSelectedExeption{
-		
+		keywordsCounts.clear();
 		FluScoreCaculator f = new FluScoreCaculator(kg);
 		//Collector c = new Collector();
 		DateCalculator d = new DateCalculator(3);
@@ -57,6 +57,9 @@ public class Functions {
 		c.setLocation(location);
 
 		for(int i = 1; i<=numberOfPeriods; i++){
+			
+			HashMap<String, Integer> k = new HashMap<String, Integer>();
+			
 			c.setSince(d.getStartDate());
 			c.setUntil(d.getEndData());
 			
@@ -67,8 +70,9 @@ public class Functions {
 				int count = c.search(key); 
 				counts.add(count);
 				keywords.add(key);
-				keywordsCounts.put(key, count + keywordsCounts.getOrDefault(key, 0));
+				k.put(key, count);
 			}
+			keywordsCounts.add(k);
 			
 			
 			fluScoreArray[i-1] = f.getfluScore(counts, keywords);
@@ -83,7 +87,7 @@ public class Functions {
 		
 	}
 	
-	public HashMap<String, Integer> getkeyWordsCounts(){
+	public ArrayList<HashMap<String, Integer>> getkeyWordsCounts(){
 		return keywordsCounts;
 		
 	}

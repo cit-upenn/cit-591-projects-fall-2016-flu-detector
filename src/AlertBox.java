@@ -17,7 +17,7 @@ import javafx.geometry.*;
 
 public class AlertBox {
 
-	public static void display(String title, String message, HashMap<String, Integer> keywordsCounts){
+	public static void display(String title, String message, ArrayList<HashMap<String, Integer>> keywordsCounts){
 
 		Stage alertWindow = new Stage();
 		//prevent user get back without taking care of the open window

@@ -29,7 +29,7 @@ import javafx.geometry.*;
 
 public class FindMore {
 
-	public static void display( HashMap<String, Integer> keywordsCounts){
+	public static void display( ArrayList<HashMap<String, Integer>> keywordsCounts){
 		
 		//Functions f = new Functions();
 
@@ -57,11 +57,11 @@ public class FindMore {
 //			center.getChildren().add(content);
 //		}
 		
-		String k1 = "Austria";
-	    String k2 = "Brazil";
-	    String k3 = "France";
-	    String k4 = "Italy";
-	    String k5 = "USA";
+//		String k1 = "s" ;
+//	    String k2 = "Brazil";
+//	    String k3 = "France";
+//	    String k4 = "Italy";
+//	    String k5 = "USA";
 	 
 		
 		
@@ -73,27 +73,25 @@ public class FindMore {
         xAxis.setLabel("Country");       
         yAxis.setLabel("Value");
  
-        XYChart.Series series1 = new XYChart.Series();
-        series1.setName("time1");       
-        series1.getData().add(new XYChart.Data(k1, 25601.34));
-        series1.getData().add(new XYChart.Data(k2, 20148.82));
-        series1.getData().add(new XYChart.Data(k3, 10000));
-        series1.getData().add(new XYChart.Data(k4, 35407.15));
-        series1.getData().add(new XYChart.Data(k5, 12000));      
+            
         
+       
+        XYChart.Series series1 = new XYChart.Series();
+        series1.setName("Recent Period");   
+       
         XYChart.Series series2 = new XYChart.Series();
-        series2.setName("time2");
-        series2.getData().add(new XYChart.Data(k1, 57401.85));
-        series2.getData().add(new XYChart.Data(k2, 41941.19));
-        series2.getData().add(new XYChart.Data(k3, 45263.37));
-        series2.getData().add(new XYChart.Data(k4, 117320.16));
-        series2.getData().add(new XYChart.Data(k5, 14845.27));  
-		
-		
-		
-		
-		
-		
+        series2.setName("Past Period");
+       
+        for(String keyWord: keywordsCounts.get(0).keySet()){
+        series2.getData().add(new XYChart.Data(keyWord, keywordsCounts.get(0).get(keyWord)));
+           
+        }
+        
+        for(String keyWord: keywordsCounts.get(1).keySet()){
+            series1.getData().add(new XYChart.Data(keyWord, keywordsCounts.get(1).get(keyWord)));
+               
+        }
+ 
         bc.getData().addAll(series1, series2);
 		
 		BorderPane bp = new BorderPane();
