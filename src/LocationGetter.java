@@ -1,6 +1,7 @@
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Set;
+import java.util.TreeSet;
 
 import twitter4j.GeoLocation;
 
@@ -36,7 +37,7 @@ public class LocationGetter {
 	}
 	
 	public Set<String> getStates(){
-		return map.keySet();	
+		return new TreeSet<String>(map.keySet());	
 	}
 	
 	public static void main(String[] args) throws FileNotFoundException {
