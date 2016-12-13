@@ -44,35 +44,43 @@ public class Collector {
 	
 	/**
 	 * clear all the exampleTweets for the last period.
+	 * @return this object
 	 */
-	public void resetCollector() {
+	public Collector resetCollector() {
 		exampleTweets.clear();
+		return this;
 	}
 	
 	/**
 	 * Sets the date the collector starts collecting data. </br>
 	 * Tweets sent on this day are counted.
 	 * @param startTime the start date in the format "YYYY-MM-DD"
+	 * @return this object
 	 */
-	public void setSince(String startTime) {
+	public Collector setSince(String startTime) {
 		this.startTime = startTime;
+		return this;
 	}
 	
 	/**
 	 * Sets the date the collector stops collecting data. </br>
 	 * Tweets sent on this day are NOT counted.
 	 * @param endTime the end date in the format "YYYY-MM-DD"
+	 * @return this object
 	 */
-	public void setUntil(String endTime){
+	public Collector setUntil(String endTime){
 		this.endTime = endTime;
+		return this;
 	}
 	
 	/**
 	 * Set the location the collector searches for tweets
 	 * @param location the location
+	 * @return this object
 	 */
-	public void setLocation(GeoLocation location) {
+	public Collector setLocation(GeoLocation location) {
 		this.location = location;
+		return this;
 	}
 	
 	/**
