@@ -8,6 +8,13 @@ import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 import com.lynden.gmapsfx.shapes.Circle;
 import com.lynden.gmapsfx.shapes.CircleOptions;
 
+/**
+ * This class calls the Google map API with the help of GMapsFX </p>
+ * creates a {@link GoogleMapView} object which can be added to a JavaFX format as a node. </br>
+ * creates a related {@link GoogleMap} object as the connection between java and javascript
+ * @author CJC
+ *
+ */
 public class MapGenerator implements MapComponentInitializedListener{
 
 	GoogleMapView mapView;
@@ -21,22 +28,42 @@ public class MapGenerator implements MapComponentInitializedListener{
 		mapView.addMapInializedListener(this);
 	}
 	
+	/**
+	 * accessor for the Google map view
+	 * @return the mapView which is considered as a node in JavaFX
+	 */
 	public GoogleMapView getMapView() {
 		return mapView;
 	}
 	
+	/**
+	 * 
+	 * @return the coordinate of the center of the map view
+	 */
 	public LatLong getCenter() {
 		return map.getCenter();
 	}
 	
+	/**
+	 * Set the center of the map view
+	 * @param loc the point on which this object sets the map view
+	 */
 	public void setCenter(LatLong loc) {
 		map.setCenter(loc);
 	}
 	
+	/**
+	 * 
+	 * @param scale the level to which this object zooms
+	 */
 	public void setZoom(int scale) {
 		map.setZoom(scale);
 	}
 	
+	/**
+	 * move the marker to the location passed in.
+	 * @param loc the point on which the marker is set
+	 */
 	public void setMarker(LatLong loc) {
 		
 		marker.setPosition(loc);
@@ -44,6 +71,10 @@ public class MapGenerator implements MapComponentInitializedListener{
 
 	}
 	
+	/**
+	 * move the center of the circle to the location passed in
+	 * @param loc the center of the circle
+	 */
 	public void setCircle(LatLong loc) {
 		
 		circle.setCenter(loc);
@@ -82,7 +113,7 @@ public class MapGenerator implements MapComponentInitializedListener{
 		.fillOpacity(0.20)
 		.visible(false)
 		.strokeColor("gray")
-		.radius(241401.6); //150 MILE
+		.radius(241401.6); //radius, 150 MILE in meter
 		
 		circle = new Circle(circleOptions);
 		map.addMapShape(circle);
