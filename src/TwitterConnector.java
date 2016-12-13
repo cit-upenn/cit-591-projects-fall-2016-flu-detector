@@ -1,15 +1,22 @@
-import java.util.List;
 
-import twitter4j.Query;
-import twitter4j.QueryResult;
-import twitter4j.Status;
 import twitter4j.Twitter;
-import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
-
+/**
+ * This class creates Twitter instance in user authentication mode. 
+ * A backup set of access token is provided in case the primary one reaches its search rate limit. 
+ * @author CJC
+ *
+ */
 public class TwitterConnector {
 
+	/**
+	 * Create a ConfigurationBuilder </br> 
+	 * Passes in consumer key and secret </br>
+	 * Passes in Access token and secret</br>
+	 * Calls twitter factory and creates twitter object
+	 * @return The primary twitter instance
+	 */
 	public static Twitter getTwitter() {
 
 		ConfigurationBuilder cb = new ConfigurationBuilder();
@@ -22,7 +29,14 @@ public class TwitterConnector {
 		return new TwitterFactory(cb.build()).getInstance();
 
 	}
-
+	
+	/**
+	 * Create a ConfigurationBuilder </br> 
+	 * Passes in the backup consumer key and secret </br>
+	 * Passes in the backup Access token and secret</br>
+	 * Calls twitter factory and creates twitter object
+	 * @return The backup twitter instance.
+	 */
 	public static Twitter getTwitterBackup() {
 
 		ConfigurationBuilder cb = new ConfigurationBuilder();
