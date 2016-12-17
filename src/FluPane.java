@@ -1,5 +1,4 @@
 import com.lynden.gmapsfx.javascript.object.LatLong;
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -15,6 +14,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import twitter4j.GeoLocation;
 
+/**
+ * 
+ * @author chenchen
+ *
+ */
 public class FluPane extends Application{
 
 	

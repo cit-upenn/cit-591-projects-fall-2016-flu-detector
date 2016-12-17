@@ -12,7 +12,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import twitter4j.GeoLocation;
 import javafx.geometry.*;
-
+/**
+ * 
+ * @author Chenchen
+ *
+ */
 public class ExceptionBox {
 
 	public static void display(String title, String message, ArrayList<String> tweets){
