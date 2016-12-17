@@ -1,10 +1,8 @@
-//FileReader.java
-
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 /**
- * read a ascii file line by line
+ * reads an ASCII file line by line. works exact the same as a {@link Scanner}.
  * @author CJC
  *
  */
@@ -13,9 +11,9 @@ class FileReader {
 	private Scanner in;
 	
 	/**
-	 * create a new file reader object
+	 * Constructor: initialize a new file reader object of the file on the path
 	 * @param path the path of the input file
-	 * @throws FileNotFoundException
+	 * @throws FileNotFoundException if the path is not valid
 	 */
 	public FileReader(String path) throws FileNotFoundException{
 
@@ -25,7 +23,7 @@ class FileReader {
 	}
 	
 	/**
-	 * check if the input fine has more line
+	 * Checks if the input file has more lines
 	 * @return true if the the input file has next line
 	 */
 	public boolean hasNextLine() {
@@ -33,22 +31,11 @@ class FileReader {
 	}
 
 	/**
-	 * return the next line of the input file.
-	 * @return
+	 * Reads and returns the next line of the input file.
+	 * @return the next line in the input file
 	 */
 	public String nextLine() {
 		return in.nextLine();
-	}
-
-	public static void main(String[] args) {
-		String path = "files/alice-in-wonderland.txt";
-		try {
-			FileReader in = new FileReader(path);
-			System.out.println(in.nextLine());
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 }
 
