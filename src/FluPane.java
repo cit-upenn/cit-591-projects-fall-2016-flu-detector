@@ -16,7 +16,7 @@ import twitter4j.GeoLocation;
 
 /**
  * 
- * @author chenchen
+ * @author xiangzhang
  *
  */
 public class FluPane extends Application{

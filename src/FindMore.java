@@ -29,8 +29,8 @@ import javafx.stage.Modality;
 import twitter4j.GeoLocation;
 import javafx.geometry.*;
 /**
- * 
- * @author LuyiYang
+ * This is a class to show more details about flu score by 
+ * @author LuyiYang data visualization retrieved data.
  *
  */
 public class FindMore {
@@ -38,19 +38,25 @@ public class FindMore {
 	public static void display( ArrayList<HashMap<String, Integer>> keywordsCounts){
 		
 		//Functions f = new Functions();
-
+/**
+ * Build a new stage to hold this window.
+ */
 		Stage findMoreWindow = new Stage();
-	
+/**
+ * set title for the box.	
+ */
 		findMoreWindow.initModality(Modality.APPLICATION_MODAL);
 		findMoreWindow.setTitle("More about the flu");
 		findMoreWindow.setMinWidth(400);
 
-
+/**
+ * set button to hold the action of going back.
+ */
 		Button closeButton = new Button("go back");
 		closeButton.setOnAction (e->findMoreWindow.close());
-	 
-		
-		
+/**
+ * construct a bar chart to show the keywords data. 	
+ */
 	    CategoryAxis xAxis = new CategoryAxis();
 	    NumberAxis yAxis = new NumberAxis();
         BarChart<String,Number> bc = 
@@ -59,15 +65,15 @@ public class FindMore {
         xAxis.setLabel("Key Words");       
         yAxis.setLabel("Tweet Counts");
  
-            
-        
-       
+              
         XYChart.Series series1 = new XYChart.Series();
         series1.setName("Recent Period");   
        
         XYChart.Series series2 = new XYChart.Series();
         series2.setName("Past Period");
-       
+ /**
+  * use two for loops to present the real-time Twitter data, given the hashmaps.   
+  */
         for(String keyWord: keywordsCounts.get(0).keySet()){
         	series1.getData().add(new XYChart.Data(keyWord, keywordsCounts.get(0).get(keyWord)));
            
@@ -86,8 +92,9 @@ public class FindMore {
 //      t.setFill(Color.STEELBLUE);
 //      t.setTextAlignment(TextAlignment.LEFT);
 //		
-
-	
+/**
+ * arrange the layout by setting center, bottom, aligment as well as margin.
+ */
 		BorderPane bp = new BorderPane();
 		BorderPane.setAlignment(closeButton, Pos.CENTER);
 		BorderPane.setMargin(closeButton, new Insets(12, 12, 12, 12));
