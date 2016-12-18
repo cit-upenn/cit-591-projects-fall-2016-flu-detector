@@ -22,6 +22,7 @@ public class FluScoreCaculator {
 	
 	/**
 	 * This method will calculate the flu score 
+	 * The flu score is calculated by adding each key word's count times the keyword's weight
 	 * @param counts, each keyword's counts
 	 * @param keywords, an ArrayList of keywords
 	 * @return
