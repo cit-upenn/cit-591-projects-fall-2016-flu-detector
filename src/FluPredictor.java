@@ -24,6 +24,7 @@ public class FluPredictor {
 	
 	/**
 	 * This method will give the flu alert is there is a flu
+	 * Note: if the flu score increased over 30%, there will be a flu; otherwise, not.
 	 * @return true if there will be a flu; false if there will not be a flu
 	 */
 	public boolean alert(){
