@@ -16,7 +16,6 @@ import javafx.stage.Stage;
  * It contains the main method
  * It is also responsible to design the windows
  * @author LuyiYang
- *
  */
 public class FluPane extends Application{
 
