@@ -1,4 +1,8 @@
-
+/**
+ * Exception occurs when the location in the {@link Collector} class is not specified
+ * @author CJC
+ *
+ */
 public class LocationNotSelectedExeption extends Exception {
 
 	/**

@@ -38,7 +38,7 @@ public class TwitterConnectorTest {
 	
 	@Test
 	public void test1() {
-	//using diff twitter instance searching for the same query should return the same result	
+	//using different twitter instance searching for the same query should return the same result	
 		tw1 =  TwitterConnector.getTwitter();
 		tw2 =  TwitterConnector.getTwitterBackup();
 		
@@ -59,7 +59,7 @@ public class TwitterConnectorTest {
 	
 	@Test
 	public void test2() {
-	//用不同的result。nextQuery() 生成的query 应该有同样的结果
+	//calling nextQuery() on different QueryResult should return the same query.
 		tw1 =  TwitterConnector.getTwitter();
 		tw2 =  TwitterConnector.getTwitterBackup();
 		
@@ -86,7 +86,7 @@ public class TwitterConnectorTest {
 	
 	@Test
 	public void test3() {
-	//changing twitter instance in the middle of search does not effect the final result 
+	//changing twitter instance in the middle of search should not effect the final result 
 		tw1 =  TwitterConnector.getTwitter();
 		tw2 =  TwitterConnector.getTwitter();
 		
