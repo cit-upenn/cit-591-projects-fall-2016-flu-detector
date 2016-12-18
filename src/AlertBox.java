@@ -42,7 +42,6 @@ public class AlertBox {
 		alertWindow.setScene(scene);
 		alertWindow.showAndWait();
 
-
 	}
 
 }

@@ -13,12 +13,17 @@ import javafx.stage.Stage;
 import twitter4j.GeoLocation;
 import javafx.geometry.*;
 /**
- * 
- * @author Chenchen
- *
+ * This is the exception box, when the user did not select his or her location, this window will pop out
+ * @author LuyiYang
  */
 public class ExceptionBox {
-
+	
+	/**
+	 * This method will display the location not selected box
+	 * @param title, title of the exception box
+	 * @param message, a message saying that the location should be selected first
+	 * @param tweets
+	 */
 	public static void display(String title, String message, ArrayList<String> tweets){
 
 		Stage alertWindow = new Stage();

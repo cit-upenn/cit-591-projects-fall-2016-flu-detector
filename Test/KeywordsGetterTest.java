@@ -37,6 +37,7 @@ public class KeywordsGetterTest {
 		int size = kg.getKeywordsSize();
 		assertEquals("Size should be",5, size);
 	}
+	
 
 
 }
